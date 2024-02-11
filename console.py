@@ -56,11 +56,11 @@ class HBNBCommand(cmd.Cmd):
     def default(self, arg):
         """Default behavior for cmd module when input is invalid"""
         argdict = {
-            "all": self.all,
-            "show": self.show,
-            "destroy": self.destroy,
-            "count": self.count,
-            "update": self.update
+            "all": self.do_all,
+            "show": self.do_show,
+            "destroy": self.do_destroy,
+            "count": self.do_count,
+            "update": self.do_update
         }
         match = re.search(r"\.", arg)
         if match is not None:
@@ -74,18 +74,18 @@ class HBNBCommand(cmd.Cmd):
         print("*** Unknown syntax: {}".format(arg))
         return False
 
-    def quit(self, arg):
+    def do_quit(self, arg):
         """Quit command to exit the program."""
 
         return True
 
-    def EOF(self, arg):
+    def do_EOF(self, arg):
         """EOF signal to exit the program."""
         
         print("")
         return True
 
-    def create(self, arg):
+    def do_create(self, arg):
         """
         Create a new instance and print its id.
         """
@@ -99,7 +99,7 @@ class HBNBCommand(cmd.Cmd):
             print(eval(argl[0])().id)
             storage.save()
 
-    def show(self, arg):
+    def do_show(self, arg):
         """
         Prints the string representation of a class instance based on a given id and name.
         """
@@ -117,7 +117,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print(objdict["{}.{}".format(argl[0], argl[1])])
 
-    def destroy(self, arg):
+    def do_destroy(self, arg):
         """
         Delete a class instance based on a given id and name.
         """
@@ -136,7 +136,7 @@ class HBNBCommand(cmd.Cmd):
             del objdict["{}.{}".format(argl[0], argl[1])]
             storage.save()
 
-    def all(self, arg):
+    def do_all(self, arg):
         """
         Prints all string representations of all instances of a given class.
         If no class is specified, displays all instantiated objects."""
@@ -153,7 +153,7 @@ class HBNBCommand(cmd.Cmd):
                     objl.append(obj.__str__())
             print(objl)
 
-    def count(self, arg):
+    def do_count(self, arg):
         """
         Retrieve the number of instances of a class."""
         
