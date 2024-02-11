@@ -56,11 +56,11 @@ class HBNBCommand(cmd.Cmd):
     def default(self, arg):
         """Default behavior for cmd module when input is invalid"""
         argdict = {
-            "all": self.do_all,
-            "show": self.do_show,
-            "destroy": self.do_destroy,
-            "count": self.do_count,
-            "update": self.do_update
+            "all": self.all,
+            "show": self.show,
+            "destroy": self.destroy,
+            "count": self.count,
+            "update": self.update
         }
         match = re.search(r"\.", arg)
         if match is not None:
