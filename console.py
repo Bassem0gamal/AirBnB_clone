@@ -81,7 +81,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, arg):
         """EOF signal to exit the program."""
-        
+
         print("")
         return True
 
@@ -89,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Create a new instance and print its id.
         """
-        
+
         argl = parse(arg)
         if len(argl) == 0:
             print("** class name missing **")
@@ -101,9 +101,10 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """
-        Prints the string representation of a class instance based on a given id and name.
+        Prints the string representation of a class instance
+	based on a given id and name.
         """
-        
+
         argl = parse(arg)
         objdict = storage.all()
         if len(argl) == 0:
@@ -121,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Delete a class instance based on a given id and name.
         """
-        
+
         argl = parse(arg)
         objdict = storage.all()
         if len(argl) == 0:
@@ -140,7 +141,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints all string representations of all instances of a given class.
         If no class is specified, displays all instantiated objects."""
-        
+
         argl = parse(arg)
         if len(argl) > 0 and argl[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
@@ -156,13 +157,14 @@ class HBNBCommand(cmd.Cmd):
     def do_count(self, arg):
         """
         Retrieve the number of instances of a class."""
-        
+
         argl = parse(arg)
         count = 0
         for obj in storage.all().values():
             if argl[0] == obj.__class__.__name__:
                 count += 1
         print(count)
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
