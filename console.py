@@ -165,7 +165,7 @@ class HBNBCommand(cmd.Cmd):
                 count += 1
         print(count)
 
-     def do_update(self, arg):
+    def do_update(self, arg):
 	"""
         Update a class instance of a given id by adding or updating
         a given attribute key/value pair or dictionary."""
