@@ -169,7 +169,7 @@ class HBNBCommand(cmd.Cmd):
         """ Update a class instance of a given id by adding or updating
         a given attribute key/value pair or dictionary."""
 
-         argl = parse(arg)
+        argl = parse(arg)
         objdict = storage.all()
 
         if len(argl) == 0:
